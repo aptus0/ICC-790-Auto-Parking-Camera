@@ -6,6 +6,7 @@ Bu sürüm; araç giriş/çıkış, ücret hesaplama, içerideki araçlar, abone
 
 ![Ekran Resmi 1](Image.png)
 ![Ekran Resmi 1](ımage2.png)
+![Ekran Resmi 1](ımage3.png)
 
 ## Neden FireMonkey?
 
