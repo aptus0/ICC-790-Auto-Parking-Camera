@@ -1,0 +1,56 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{6A3D2E9A-3641-4A85-98A0-95F703D5B990}</ProjectGuid>
+        <ProjectVersion>20.0</ProjectVersion>
+        <FrameworkType>FMX</FrameworkType>
+        <MainSource>ParkFlowPro.dpr</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
+        <TargetedPlatforms>3</TargetedPlatforms>
+        <AppType>Application</AppType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;FMX;FireDAC;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_UsePackage>fmx;FireDAC;FireDACSQLiteDriver;$(DCC_UsePackage)</DCC_UsePackage>
+        <Icon_MainIcon>$(BDS)\bin\default_app_icon.ico</Icon_MainIcon>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug'">
+        <Base>true</Base>
+        <CfgParent>Base</CfgParent>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release'">
+        <Base>true</Base>
+        <CfgParent>Base</CfgParent>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <SanitizedProjectName>ParkFlowPro</SanitizedProjectName>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="ParkFlowPro.dpr">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="App\uAppTypes.pas"/>
+        <DCCReference Include="App\uAppPaths.pas"/>
+        <DCCReference Include="Infra\uDatabase.pas"/>
+        <DCCReference Include="Security\uPasswordHasher.pas"/>
+        <DCCReference Include="Services\uAuthService.pas"/>
+        <DCCReference Include="Services\uTariffService.pas"/>
+        <DCCReference Include="Services\uSubscriberService.pas"/>
+        <DCCReference Include="Services\uParkingService.pas"/>
+        <DCCReference Include="Services\uReportService.pas"/>
+        <DCCReference Include="Services\uSettingsService.pas"/>
+        <DCCReference Include="UI\uMainForm.pas"/>
+        <DCCReference Include="UI\uMainForm.fmx"/>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPID)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPID)\UserTools.proj')"/>
+</Project>
